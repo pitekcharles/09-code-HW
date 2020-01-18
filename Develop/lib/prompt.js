@@ -21,7 +21,7 @@ function prompt () {
                     message:"What type of Employee is this?",
                     name:"role",
                     choices:["Manager", "Intern", "Engineer"]
-                }
+                },
                 {
                     type: "input",
                     message:"Enter Employees Name:",
@@ -39,7 +39,7 @@ function prompt () {
                 },
                 {
                     type:"list",
-                    message:"Whould you like to add another employee to the team?"
+                    message:"Whould you like to add another employee to the team?",
                     name:"continue",
                     choices:["yes", "no"]
                 }
