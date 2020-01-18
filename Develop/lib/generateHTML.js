@@ -1,4 +1,4 @@
-function generateHTML(employeeArray, teamName) {
+function generateHTML(employeeArray) {
     const headSection = `<!DOCTYPE html>
     <html lang="en">
     
@@ -14,7 +14,7 @@ function generateHTML(employeeArray, teamName) {
     <body>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">${teamName}</h1>
+                <h1 class="display-4">${employeeArray[0]}</h1>
             </div>
         </div>
         <div class="container">
