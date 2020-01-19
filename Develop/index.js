@@ -75,9 +75,10 @@ function managerQuestions() {
         var manager = new Manager(response.name, response.id, response.email, response.officeNumber);
         employeeArray.push(manager);
         if (response.continue === "no") {
+            console.log(employeeArray);
             afterPrompts();
         } else {
-            
+
             askType();
         }
     });
@@ -115,6 +116,7 @@ function engineerQuestions() {
         var engineer = new Engineer(response.name, response.id, response.email, response.github);
         employeeArray.push(engineer);
         if (response.continue === "no") {
+            console.log(employeeArray);
             afterPrompts();
         } else {
             askType();
@@ -185,40 +187,37 @@ function generateHTML(employeeArray) {
             <div class="row addCard">`);
 
     for (var i = 1; i < employeeArray.length; i++) {
-        switch (employeeArray[i].getRole()) {
-            case "Manager":
-                headSection.push(
-                    `<div class="col-md">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">${employeeArray[i].name}</h5>
-                            <h6 class="card-subtitle mb-2">${employeeArray[i].getRole()}</h6>
-                            <p class="card-text">ID: ${employeeArray[i].id}</p>
-                            <p>Email: <a href="${employeeArray[i].email}" class="card-link">${employeeArray[i].email}</a></p>
-                            <p>Office number: ${employeeArray[i].officeNumber}</p>
-                        </div>
+        if (employeeArray[i].getRole() === "Manager") {
+            headSection.push(
+                `<div class="col-md">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${employeeArray[i].name}</h5>
+                        <h6 class="card-subtitle mb-2">${employeeArray[i].getRole()}</h6>
+                        <p class="card-text">ID: ${employeeArray[i].id}</p>
+                        <p>Email: <a href="${employeeArray[i].email}" class="card-link">${employeeArray[i].email}</a></p>
+                        <p>Office number: ${employeeArray[i].officeNumber}</p>
                     </div>
-                </div>`
-                );
-                break;
-            case "Engineer":
-                headSection.push(
-                    `<div class="col-md">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">${employeeArray[i].name}</h5>
-                            <h6 class="card-subtitle mb-2">${employeeArray[i].getRole()}</h6>
-                            <p class="card-text">ID: ${employeeArray[i].id}</p>
-                            <p>Email: <a href="${employeeArray[i].email}" class="card-link">${employeeArray[i].email}</a></p>
-                            <p>Email: <a href="github.com/${employeeArray[i].github}" class="card-link">${employeeArray[i].github}</a></p>
-                        </div>
+                </div>
+            </div>`
+            );
+        } else if (employeeArray[i].getRole() === "Engineer") {
+            headSection.push(
+                `<div class="col-md">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${employeeArray[i].name}</h5>
+                        <h6 class="card-subtitle mb-2">${employeeArray[i].getRole()}</h6>
+                        <p class="card-text">ID: ${employeeArray[i].id}</p>
+                        <p>Email: <a href="${employeeArray[i].email}" class="card-link">${employeeArray[i].email}</a></p>
+                        <p>Email: <a href="github.com/${employeeArray[i].github}" class="card-link">${employeeArray[i].github}</a></p>
                     </div>
-                </div>`
-                );
-                break;
-            case "Intern":
-                headSection.push(
-                    `<div class="col-md">
+                </div>
+            </div>`
+            );
+        } else {
+            headSection.push(
+                `<div class="col-md">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">${employeeArray[i].name}</h5>
@@ -229,25 +228,24 @@ function generateHTML(employeeArray) {
                         </div>
                     </div>
                 </div>`
-                );
-                break;
+            )
         }
-        headSection.push(
-            `</div>
-            </div>
-        </body>
-        
-        </html>`
-        );
-        headSection.join("");
-        return headSection;
     }
+    headSection.push(
+        `</div>
+                </div>
+            </body>
+            
+            </html>`
+    );
+    headSection.join("\n");
+    return headSection;
 }
 
-function afterPrompts (){
+function afterPrompts() {
     var outputHtml = generateHTML(employeeArray);
-    
-    fs.writeFile(`${employeeArray[0]}.html`, outputHtml, (error)=>{
+
+    fs.writeFile(`${employeeArray[0]}.html`, outputHtml, (error) => {
         if (error) throw error;
         console.log(`The team profile has been saved to ${employeeArray[0]}.html`)
     })
