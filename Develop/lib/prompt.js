@@ -70,7 +70,7 @@ function managerQuestions() {
         var manager = new Manager(response.name, response.id, response.email, response.officeNumber);
         employeeArray.push(manager);
         if (response.continue === "no") {
-            
+            console.log(employeeArray);
         } else {
             
             askType();
