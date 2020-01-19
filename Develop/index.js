@@ -2,9 +2,7 @@ const Employee = require("./lib/Employee.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
 const Manager = require("./lib/Manager.js");
-// const createHTML = require("./lib/generateHTML.js");
 const inquirer = require("inquirer");
-// const prompt = require("./lib/prompt.js");
 const fs = require("fs");
 
 const employeeArray = [];
@@ -12,7 +10,6 @@ let headSection = [];
 
 
 function userInput() {
-    // var employeeArray = [];
     inquirer.prompt({
         type: "input",
         message: "What is your Team Name?",
@@ -22,7 +19,6 @@ function userInput() {
         employeeArray.push(response.teamName);
         askType();
     })
-    // return employeeArray;
 }
 
 function askType() {
@@ -75,7 +71,6 @@ function managerQuestions() {
         var manager = new Manager(response.name, response.id, response.email, response.officeNumber);
         employeeArray.push(manager);
         if (response.continue === "no") {
-            console.log(employeeArray);
             afterPrompts();
         } else {
 
@@ -116,7 +111,6 @@ function engineerQuestions() {
         var engineer = new Engineer(response.name, response.id, response.email, response.github);
         employeeArray.push(engineer);
         if (response.continue === "no") {
-            console.log(employeeArray);
             afterPrompts();
         } else {
             askType();
@@ -156,7 +150,6 @@ function internQuestions() {
         var intern = new Intern(response.name, response.id, response.email, response.school);
         employeeArray.push(intern);
         if (response.continue === "no") {
-            console.log(employeeArray);
             afterPrompts();
         } else {
             askType();

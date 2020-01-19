@@ -68,15 +68,15 @@ function generateHTML(employeeArray) {
                 );
                 break;
         }
-        headSection.push(
-            `</div>
-            </div>
-        </body>
-        
-        </html>`
-        );
-        return headSection;
     }
+    headSection.push(
+        `</div>
+                </div>
+            </body>
+            
+            </html>`
+    );
+    return headSection;
 }
 
 module.exports = generateHTML;

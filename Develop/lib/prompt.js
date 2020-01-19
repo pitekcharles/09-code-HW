@@ -7,7 +7,6 @@ const Manager = require("./Manager.js");
 var employeeArray = [];
 
 function userInput() {
-    // var employeeArray = [];
     inquirer.prompt({
         type: "input",
         message: "What is your Team Name?",
@@ -17,7 +16,6 @@ function userInput() {
         employeeArray.push(response.teamName);
         askType();
     })
-    // return employeeArray;
 }
 
 function askType() {
@@ -70,7 +68,6 @@ function managerQuestions() {
         var manager = new Manager(response.name, response.id, response.email, response.officeNumber);
         employeeArray.push(manager);
         if (response.continue === "no") {
-            console.log(employeeArray);
         } else {
             
             askType();
@@ -110,7 +107,6 @@ function engineerQuestions() {
         var engineer = new Engineer(response.name, response.id, response.email, response.github);
         employeeArray.push(engineer);
         if (response.continue === "no") {
-            // return employeeArray;
         } else {
             askType();
         }
@@ -149,7 +145,6 @@ function internQuestions() {
         var intern = new Intern(response.name, response.id, response.email, response.school);
         employeeArray.push(intern);
         if (response.continue === "no") {
-            // return employeeArray;
         } else {
             askType();
         }
