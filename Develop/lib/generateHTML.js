@@ -20,7 +20,7 @@ function generateHTML(employeeArray) {
         <div class="container">
             <div class="row addCard">`;
 
-    for (var i = 0; i < employeeArray.length; i++) {
+    for (var i = 1; i < employeeArray.length; i++) {
         switch (employeeArray[i].getRole()) {
             case "Manager":
                 headSection.push(
