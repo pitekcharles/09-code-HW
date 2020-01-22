@@ -22,3 +22,8 @@ If you select no it will generate your html profile under a file that is your te
 
 gif of app in use:
 ![Gif of app in action](./assets/use.gif)
+
+## Technologies
+This application uses javascript, node.js, and inquirer.
+
+### This is a Charles Pitek Project
