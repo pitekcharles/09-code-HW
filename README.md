@@ -19,3 +19,6 @@ Once you enter a team name you will be prompted to enter information about each 
 After each team member it will ask you if you want to enter another employee, if you select yes it will prompt you to enter info for another employee.
 If you select no it will generate your html profile under a file that is your team name.html within the app files.
 
+
+gif of app in use:
+![Gif of app in action](./assets/use.gif)
